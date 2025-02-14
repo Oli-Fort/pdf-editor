@@ -13,7 +13,6 @@ def main():
     root.bind("<Down>", editor_ui.canvas.change_current_page)
     root.bind("<Up>", editor_ui.canvas.change_current_page)
     root.bind("<MouseWheel>", editor_ui.canvas.zoom)
-    editor_ui.canvas.bind("<B1-Motion>", editor_ui.canvas.drag)
 
     root.mainloop()
 
