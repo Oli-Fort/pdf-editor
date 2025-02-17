@@ -7,9 +7,9 @@ class PDF:
         self.document = pymupdf.open(self.path, filetype="pdf")
         self.current_page_index = 0
         self.current_page = self.document.load_page(0)
+        self.images = []
 
     def change_page(self, event):
-
 
         if self.document.page_count == 1:
             return
@@ -22,5 +22,8 @@ class PDF:
 
         self.current_page = self.document.load_page(self.current_page_index)
 
-
-
+    def save(self, path=None):
+        if not path:
+            self.document.save(self.path)
+        else:
+            self.document.save(path)
