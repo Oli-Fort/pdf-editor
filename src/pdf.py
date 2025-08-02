@@ -1,4 +1,4 @@
-import pymupdf
+from pdf2image import convert_from_path
 
 
 class PDF:
