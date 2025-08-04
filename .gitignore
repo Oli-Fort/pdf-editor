@@ -2,3 +2,5 @@
 .vscode/*
 venv/*
 src/__pycache__/*
+test_pdf/*
+.venv/*

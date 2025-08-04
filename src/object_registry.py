@@ -3,6 +3,8 @@ class ObjectRegistry:
 
     @classmethod
     def register_object(cls, name, obj):
+        if name in cls._services:
+            del cls._services[name]
         cls._services[name] = obj
 
     @classmethod

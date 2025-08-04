@@ -14,7 +14,7 @@ class MenuBar():
         with dpg.viewport_menu_bar():
             with dpg.menu(label="File"):
                 dpg.add_menu_item(label="Open", callback=lambda: dpg.show_item("file_dialog_id"))
-                dpg.add_menu_item(label="Save")
+                dpg.add_menu_item(label="Save", callback=lambda: object_registry.get_object("pdf_file").save())
                 dpg.add_menu_item(label="Save As", callback=lambda: dpg.show_item("file_dialog_id"))
                 dpg.add_menu_item(label="Close")
 
