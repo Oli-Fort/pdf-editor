@@ -4,10 +4,13 @@ from pdf2image import convert_from_path
 class PDF:
     def __init__(self, path):
         self.path = path
-        self.document = pymupdf.open(self.path, filetype="pdf")
+        self.data = None 
         self.current_page_index = 0
         self.current_page = self.document.load_page(0)
         self.images = []
+
+    def load(self):
+        self.data = convert_from_path(self.path)
 
     def change_page(self, event):
 

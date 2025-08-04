@@ -3,13 +3,12 @@ import dearpygui.dearpygui as dpg
 from canvas import CanvasWindow
 from menubar import MenuBar
 from file_dialog import FileDialog
-from file import File
-from pdf import PDF
+from files import File
+from callbacks import on_resize
 
 
 def main():
     dpg.create_context()
-
     # with dpg.window(label="Tutorial", pos=(20, 50), width=275, height=225) as win1:
     #     t1 = dpg.add_input_text(default_value="some text")
     #     t2 = dpg.add_input_text(default_value="some text")
@@ -34,16 +33,14 @@ def main():
     file_dialog = FileDialog("file_dialog")
  
     dpg.create_viewport(title='PDF editor', width=900, height=600)
+    dpg.set_viewport_resize_callback(on_resize)
 
     menu_bar = MenuBar("menu_bar")
     canvas_window = CanvasWindow("canvas_window")
 
-    file = File(None)
-
     dpg.setup_dearpygui()
     dpg.show_viewport()
     while dpg.is_dearpygui_running():
-        # canvas_window = CanvasWindow()
         dpg.render_dearpygui_frame()
     dpg.destroy_context()
 

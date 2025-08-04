@@ -1,9 +1,9 @@
 import dearpygui.dearpygui as dpg
 from object_registry import object_registry
-from decorator import add_to_registry
+from decorator import add_to_registry_decorator
 
 class FileDialog:
-    @add_to_registry
+    @add_to_registry_decorator
     def __init__(self, name):
         self.name = name
         self.selected_file_path = None
@@ -23,12 +23,14 @@ class FileDialog:
             self.add_extentions()
 
     def file_selected(self, sender, app_data):
-        self.selected_file_path = app_data['file_path_name']
-        for selection in app_data['selections']:
-            self.file_type.append(selection.split('.')[-1])
-        if object_registry['file'].path != self.selected_file_path:
-            object_registry['file'].load(self.selected_file_path)
-        print(f"File selected: {self.selected_file_path}")
+        i = 0
+        for k, v in app_data['selections'].items():
+            if i == 1:
+                break
+            self.selected_file_path = v
+            self.file_name = k
+            i += 1
+        object_registry.get_object("canvas_window").load_file(self.selected_file_path, self.file_name)
         
     def add_extentions(self):
         dpg.add_file_extension(".*", color=(255, 255, 255), custom_text="[All Files]")

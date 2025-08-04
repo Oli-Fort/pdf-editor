@@ -1,10 +1,10 @@
 import dearpygui.dearpygui as dpg
 from object_registry import object_registry
-from decorator import add_to_registry
+from decorator import add_to_registry_decorator
 
 
 class MenuBar():
-    @add_to_registry
+    @add_to_registry_decorator
     def __init__(self, name):
         self.name = name
 
